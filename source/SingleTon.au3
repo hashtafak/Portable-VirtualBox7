@@ -22,7 +22,7 @@ Func _Singleton($sOccurrenceName, $iFlag = 0)
 			If @error Then Return SetError(@error, @extended, 0)
 			If $aRet[0] Then
 				; Create a SECURITY_ATTRIBUTES structure.
-				$tSecurityAttributes = DllStructCreate($tagSECURITY_ATTRIBUTES)
+				$tSecurityAttributes = DllStructCreate("$tagSECURITY_ATTRIBUTES")
 				; Assign the members.
 				DllStructSetData($tSecurityAttributes, 1, DllStructGetSize($tSecurityAttributes))
 				DllStructSetData($tSecurityAttributes, 2, DllStructGetPtr($tSecurityDescriptor))
