@@ -806,7 +806,9 @@ If (FileExists(@ScriptDir & "\app32\virtualbox.exe") Or FileExists(@ScriptDir & 
               $VBoxNetLwfCmd = '"' & $drvTool & '" install --inf-file "' & @ScriptDir & '\' & $arch & '\drivers\network\netlwf\VBoxNetLwf.inf"'
               ConsoleWrite($VBoxNetLwfCmd & @CRLF)
               RunWait($VBoxNetLwfCmd, @ScriptDir, @SW_HIDE)
-              $VBoxNetLwfCmd2 = 'netcfg.exe -l "' & @ScriptDir & '\' & $arch & '\drivers\network\netlwf\VBoxNetLwf.inf"  -c s -i oracle_VBoxNetLwf'
+              ;~ $VBoxNetLwfCmd2 = 'netcfg.exe -l "' & @ScriptDir & '\' & $arch & '\drivers\network\netlwf\VBoxNetLwf.inf"  -c s -i oracle_VBoxNetLwf'
+              ;~ $VBoxNetLwfCmd2 = 'cmd /c C:\Windows\Sysnative\netcfg.exe -l "' & @ScriptDir & '\' & $arch & '\drivers\network\netlwf\VBoxNetLwf.inf"  -c s -i oracle_VBoxNetLwf & pause'
+              $VBoxNetLwfCmd2 = 'cmd /c C:\Windows\Sysnative\netcfg.exe -l "' & @ScriptDir & '\' & $arch & '\drivers\network\netlwf\VBoxNetLwf.inf"  -c s -i oracle_VBoxNetLwf'
               Sleep(1000)
 			  ConsoleWrite($VBoxNetLwfCmd2 & @CRLF)
 			  RunWait($VBoxNetLwfCmd2, @ScriptDir, @SW_HIDE)
@@ -2044,3 +2046,4 @@ Func NestedExtract($ExtensionPath)
 		ConsoleWrite("[ERROR] Inner file not found: " & $InnerFile & @CRLF)
 	EndIf
 EndFunc   ;==>NestedExtract
+
